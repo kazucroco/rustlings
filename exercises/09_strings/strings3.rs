@@ -1,13 +1,32 @@
 fn trim_me(input: &str) -> &str {
     // TODO: Remove whitespace from both ends of a string.
+    input.trim()
 }
 
 fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There are multiple ways to do this.
+    let mut output = String::from(input);
+    output.push_str(" world!");
+    output
 }
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons".
+
+    // didn't realize there was a "replace" function, whoops
+    match input.find("cars") {
+        Some(idx) => {
+            let mut output = String::from(&input[0..idx]);
+            output.push_str("balloons");
+
+            const LENGTH_OF_CARS: usize = 4;
+
+            output.push_str(&String::from(&input[idx + LENGTH_OF_CARS..]));
+
+            output
+        },
+        None => String::new(),
+    }
 }
 
 fn main() {
